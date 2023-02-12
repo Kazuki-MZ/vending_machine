@@ -9,7 +9,7 @@ class Item
     @stock = stock
   end
 
-  def replenish(number)
-    @stock += number
+  def replenish(add_stock)
+    @stock += add_stock
   end
 end
