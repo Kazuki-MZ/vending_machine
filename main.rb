@@ -3,36 +3,25 @@
 require_relative 'suica'
 require_relative 'item'
 require_relative 'vending'
-require_relative 'list'
-require_relative 'string'
-require_relative 'user'
 
-# Suica残高表示
 suica = Suica.new
-suica.show_balance
 # Suicaチャージ処理
-Suica.input
-suica.charge_suica
-suica.show_balance
+val = 0
+suica.charge_suica(val)
 
-# ジュース在庫作成
-items = [Item.new(name: 'ペプシ', price: 150, stock: 5),
-         Item.new(name: 'モンスター', price: 230, stock: 1),
-         Item.new(name: 'いろはす', price: 120, stock: 5)]
-
-# 購入できるジュース表示
-list = List.new(items: items)
-list.display
-
+items = [
+  Item.new(name: 'ペプシ', price: 150, stock: 5),
+  Item.new(name: 'モンスター', price: 230, stock: 5),
+  Item.new(name: 'いろはす', price: 120, stock: 5)
+]
+# 在庫補充
+# 0:ペプシ  1:モンスター  2:いろはす
+add_stock = 0
+items[1].replenish(add_stock)
 # ジュース選択
-user = User.new
-User.choice
-item = user.choice(list.items)
-
+# 0:ペプシ  1:モンスター  2:いろはす
+item = items[1]
 # 購入処理
 vending = Vending.new
+vending.items_info(items)
 vending.drink_purchase(suica, item)
-
-
-
-
