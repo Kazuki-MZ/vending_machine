@@ -15,9 +15,9 @@ items = [
   Item.new(name: 'いろはす', price: 120, stock: 5)
 ]
 # 在庫補充
+number = 0
 # 0:ペプシ  1:モンスター  2:いろはす
-add_stock = 0
-items[1].replenish(add_stock)
+items[1].add_stock(number)
 # ジュース選択
 # 0:ペプシ  1:モンスター  2:いろはす
 item = items[1]
